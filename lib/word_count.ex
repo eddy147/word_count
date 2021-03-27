@@ -8,7 +8,7 @@ defmodule WordCount do
   def count(sentence) do
     sentence
     |> String.replace(~r"[!&@\$%\^&]+", "")
-    |> String.split([" ", ":", ","], trim: true)
+    |> String.split([" ", ":", ",","_"], trim: true)
     |> list_to_map(%{})
   end
 

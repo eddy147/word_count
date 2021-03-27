@@ -7,9 +7,10 @@ defmodule WordCount do
   @spec count(String.t()) :: map
   def count(sentence) do
     sentence
-    |> String.split()
+    |> String.replace(~r"[!&@\$%\^&]+", "")
+    |> String.replace("^[A-Z,a-z,0-9]+", "")
+    |> String.split([" ", ":"], trim: true)
     |> list_to_map(%{})
-
   end
 
   def list_to_map([], %{} = m), do: m
@@ -17,5 +18,4 @@ defmodule WordCount do
   def list_to_map([head | tail], %{} = m) do
     list_to_map(tail, Map.update(m, head, 1, &(&1 + 1)))
   end
-
 end

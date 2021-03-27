@@ -35,7 +35,6 @@ defmodule WordCountTest do
     assert WordCount.count("two_words") == expected
   end
 
-  @tag :pending
   test "normalize case" do
     expected = %{"go" => 3}
     assert WordCount.count("go Go GO") == expected
